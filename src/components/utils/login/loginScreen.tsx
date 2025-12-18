@@ -1,8 +1,9 @@
-import React from "react";
 import Button from "../buttons/buttonDesign1";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 
-const loginButtons = () => {
+const LoginButtons = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-4 w-full">
       <Button
@@ -53,6 +54,7 @@ const loginButtons = () => {
         size="xl"
         textColor="white"
         className="mailButton flex items-center justify-center text-center w-full gap-4"
+        onClick={() => navigate("/login")}
       >
         <svg
           className="w-6 h-6 text-white"
@@ -72,15 +74,15 @@ const loginButtons = () => {
         </svg>
         Continuar con Correo electrónico
       </Button>
-      <hr className="border-gray-300"/>
-      <div className="flex text-center justify-center items-center gap-4">
-        <p>¿No tenés una cuenta? </p>
-        <Button size="md" textColor="white" className="registerButton">
-          Registrate acá
-        </Button>
+      <hr className="border-gray-300" />
+      <div className="text-sm font-medium text-gray-500 ">
+        ¿No tenés una cuenta?
+        <a href="/register/" className="ml-1 text-gray-800 hover:underline ">
+          Registrate acá.
+        </a>
       </div>
     </div>
   );
 };
 
-export default loginButtons;
+export default LoginButtons;

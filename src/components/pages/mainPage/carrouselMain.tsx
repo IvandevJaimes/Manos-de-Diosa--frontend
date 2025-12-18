@@ -1,13 +1,11 @@
-import React from "react";
-import Carousel from "../utils/carousel/carousel";
-
+import Carousel from "../../utils/carousel/carousel";
 
 interface CarouselImage {
   url: string;
   alt: string;
 }
 
-const CarrouselMain: React.FC = () => {
+const CarrouselMain = () => {
   const carouselImages: CarouselImage[] = [
     {
       url: "https://tse3.mm.bing.net/th/id/OIP.jGHquk_ucMbHpygJgQ9PCgHaFP?pid=Api&P=0&h=220",

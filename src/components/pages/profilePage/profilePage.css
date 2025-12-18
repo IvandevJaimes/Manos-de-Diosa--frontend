@@ -1,0 +1,101 @@
+.profileMain {
+    background: var(--g-overlay-cream);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.profileBody {
+    background: var(--cream-50);
+    border-radius: 20px;
+    box-shadow: var(--shadow-4);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profileTitle{
+    background: var(--pink-100);
+    & h1{
+        font-size: 25px;
+    }
+    & svg{
+        height: 26px;
+        width: 26px;
+    }
+}
+
+.dates,
+.actions {
+    background: var(--cream-50);
+    border-radius: 20px;
+    box-shadow: var(--shadow-4);
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+
+/* Media queries para pantallas grandes */
+@media screen and (min-width: 768px) {
+    .profileBody {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .dates,
+    .actions {
+        max-width: 700px;
+        margin: 2rem auto 0 auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .profileBody {
+        max-width: 900px;
+    }
+
+    .dates,
+    .actions {
+        max-width: 900px;
+    }
+}
+
+.credentials div{
+    box-shadow: var(--shadow-3);
+    
+}
+
+@media screen and (min-width: 768px) {
+    .credentials{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 300px) and (max-width:500px) {
+    .profileTitle{
+        background: var(--pink-100);
+        & h1{
+            font-size: 23px;
+        }
+        & svg{
+            height: 23px;
+            width: 23px;
+        }
+    }
+    .profileImage{
+        width: 100px;
+        height: 100px;
+    }
+    .nameUser{
+        font-size: 25px;
+    }
+    .editAvatarButtons {
+        flex-direction: column;
+    }
+    .modalEditProfile{
+        margin: 40px;
+    }
+}
+
+.editAvatarButtons button{
+    background: var(--g-pink-deep);
+}

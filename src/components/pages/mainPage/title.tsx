@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./title.css";
-import ButtonDesign1 from "../utils/buttons/buttonDesign1";
+import ButtonDesign1 from "../../utils/buttons/buttonDesign1";
 
 const Title = () => {
   return (

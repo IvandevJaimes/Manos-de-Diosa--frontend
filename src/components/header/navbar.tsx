@@ -1,23 +1,28 @@
-import React from "react";
-
+import { useState } from "react";
 import "./navbar.css";
-
 import manosdeDiosaLogo from "../../assets/Manos-de-Diosa-Logo (1).png";
 import LoginButton from "../utils/buttons/buttonDesign1";
 import BubbleAuth from "../utils/messages/bubbleAuth.tsx";
-
+import { useProfileQuery } from "../../querys/profileQuery.ts";
+import BubbleProfile from "../utils/profile/profileBubble.tsx";
+import { useLocation, Link } from "react-router-dom";
 interface NavbarProps {
-  handleToggle: () => void;
+  handleToggle?: () => void;
   handleOpen?: () => void;
 }
 
-const navbar: React.FC<NavbarProps> = ({ handleToggle, handleOpen}) => {
+const Navbar = ({ handleToggle, handleOpen }: NavbarProps) => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const [visible, setVisible] = useState(false);
+  const { data, isLoading } = useProfileQuery();
+
   return (
     <>
       <nav className="navbarTop">
         <div className="flex justify-between items-center py-4 px-4">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
-            {/* Botón openSidebar al lado del logo, solo mobile */}
             <button
               onClick={handleToggle}
               className="openSidebar text-white hover:text-gray-800 cursor-pointer md:hidden mr-4"
@@ -102,15 +107,41 @@ const navbar: React.FC<NavbarProps> = ({ handleToggle, handleOpen}) => {
                 </div>
               </button>
             </section>
+            {currentPath !== "/perfil" && (
+              <div>
+                {isLoading ? (
+                  <BubbleProfile isLoading={true} className="bubbleProfile" />
+                ) : data?.success ? (
+                  <Link to={"/perfil"}>
+                    <>
+                      <BubbleProfile
+                        avatar={data.data?.avatar}
+                        className="bubbleProfile"
+                      />
+                    </>
+                  </Link>
+                ) : (
+                  <div className="loginButton flex items-center">
+                    <LoginButton
+                      onClick={() => {
+                        handleOpen?.();
+                        setVisible(false);
+                      }}
+                      size="md"
+                      textColor="white"
+                    >
+                      Iniciar sesión
+                    </LoginButton>
 
-            <div className="loginButton flex items-center">
-              <LoginButton onClick={handleOpen} size="md" className="" textColor="white" id="">
-                Inciar sesión
-              </LoginButton>
-            
-              <BubbleAuth className="bubble"></BubbleAuth>
-              
-            </div>
+                    <BubbleAuth
+                      className="bubble"
+                      visible={visible}
+                      setVisible={setVisible}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </nav>
@@ -119,30 +150,37 @@ const navbar: React.FC<NavbarProps> = ({ handleToggle, handleOpen}) => {
         <div className="px-4 py-3">
           <div className="flex items-center text-center">
             <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
-              <li className="ml-4">
-                <a
-                  href="#"
-                  className="text-white hover:underline "
-                  aria-current="page"
-                >
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white hover:underline">
-                  Servicios
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white hover:underline">
-                  Cursos
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white hover:underline">
-                  Contacto
-                </a>
-              </li>
+              {currentPath !== "/" && (
+                <li className="ml-4">
+                  <a href="/" className="text-white hover:underline">
+                    Inicio
+                  </a>
+                </li>
+              )}
+
+              {currentPath !== "/servicios" && (
+                <li>
+                  <a href="/servicios" className="text-white hover:underline">
+                    Servicios
+                  </a>
+                </li>
+              )}
+
+              {currentPath !== "/cursos" && (
+                <li>
+                  <a href="/cursos" className="text-white hover:underline">
+                    Cursos
+                  </a>
+                </li>
+              )}
+
+              {currentPath !== "/contacto" && (
+                <li>
+                  <a href="/contacto" className="text-white hover:underline">
+                    Contacto
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -151,4 +189,4 @@ const navbar: React.FC<NavbarProps> = ({ handleToggle, handleOpen}) => {
   );
 };
 
-export default navbar;
+export default Navbar;

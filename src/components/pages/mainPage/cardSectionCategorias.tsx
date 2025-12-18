@@ -1,5 +1,5 @@
 import React from "react";
-import CardDesign2 from "../utils/cards/cardDesign2";
+import CardDesign2 from "../../utils/cards/cardDesign2";
 
 const CardsSection = () => {
   const cards = [

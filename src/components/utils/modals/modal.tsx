@@ -2,7 +2,6 @@ import React from "react";
 import "./modal.css";
 import { useEffect } from "react";
 
-
 interface ModalProps {
   className?: string;
   isOpen: boolean;
@@ -11,14 +10,15 @@ interface ModalProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
 }
-const Modal: React.FC<ModalProps> = ({
+
+const Modal = ({
   className,
   isOpen,
   onClose,
   title,
   children,
   footer,
-}) => {
+}: ModalProps) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -31,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   if (!isOpen) return null;
+
   return (
     <>
       <div
@@ -52,21 +53,18 @@ const Modal: React.FC<ModalProps> = ({
       ></div>
 
       <div
-        className="modalContainer fixed inset-0 flex justify-center items-center w-full h-full "
+        className="modalContainer fixed inset-0 flex justify-center items-center w-full h-full"
         aria-modal="true"
         id="default-modal"
       >
         <div
-          className={`${
-            className || ""
-          }modal relative rounded-lg shadow-sm overflow-hidden`}
+          onClick={(e) => e.stopPropagation()}
+          className={`${className || ""} modal relative rounded-lg shadow-sm overflow-hidden`}
+          style={{ zIndex: 10000 }}
         >
-          {/* Header */}
           <div className="flex items-center justify-between p-4 md:p-5 border-b border-gray-200 dark:border-gray-600">
             {title && (
-              <h3 className="text-xl font-bold text-gray-900">
-                {title}
-              </h3>
+              <h3 className="text-xl font-bold text-gray-900">{title}</h3>
             )}
             <button
               onClick={onClose}
@@ -91,7 +89,7 @@ const Modal: React.FC<ModalProps> = ({
 
           {/* Body */}
           <div className="p-4 md:p-5 space-y-4">{children}</div>
-          
+
           {/* Footer */}
           {footer && (
             <div className="flex items-center p-4 md:p-5 border-t border-gray-200 dark:border-gray-600">

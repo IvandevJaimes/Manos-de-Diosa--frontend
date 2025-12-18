@@ -1,0 +1,6 @@
+.spin{
+    color: var(--pink-400);
+}
+.loadingMessage{
+    color: var(--pink-800);
+}

@@ -1,13 +1,8 @@
-import React from "react";
-
 interface CarouselProps {
   images?: string[];
   className?: string;
-
 }
-const Carousel: React.FC<CarouselProps> = ({ images=[], className }) => {
-
-
+const Carousel = ({ images = [], className }: CarouselProps) => {
   return (
     <div
       id="indumentaria-carousel"
@@ -16,16 +11,21 @@ const Carousel: React.FC<CarouselProps> = ({ images=[], className }) => {
     >
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96 cursor-pointer">
         {images.map((image, index) => (
-          <div className="duration-700 ease-in-out " data-carousel-item="active" onClick={() => {console.log(index)}} key={index}>
+          <div
+            className="duration-700 ease-in-out "
+            data-carousel-item="active"
+            onClick={() => {
+              console.log(index);
+            }}
+            key={index}
+          >
             <img
-    
               src={image.url}
               className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt={image.alt}
             />
           </div>
         ))}
-       
       </div>
 
       {/* Controles */}

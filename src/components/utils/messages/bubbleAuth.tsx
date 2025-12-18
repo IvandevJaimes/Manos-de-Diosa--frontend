@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-type Props = {
+type BubbleProps = {
   className?: string;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
 };
 
-const BubbleAuth: React.FC<Props> = ({ className }) => {
-  const [visible, setVisible] = useState(false);
-
+const BubbleAuth = ({ className, visible, setVisible }: BubbleProps) => {
   useEffect(() => {
     const show = setTimeout(() => setVisible(true), 3000);
     const hide = setTimeout(() => setVisible(false), 13000);
     return () => {
       clearTimeout(show);
-      clearTimeout(hide)
+      clearTimeout(hide);
     };
-  }, []);
+  }, [setVisible]);
 
   return (
     <div
@@ -30,7 +30,10 @@ const BubbleAuth: React.FC<Props> = ({ className }) => {
     >
       <div className="bubblePointer absolute rotate-45"></div>
       <p className="font-boldtext-gray-700 flex items-center justify-center">
-        <button className="text-gray-700 absolute top-0 left-0" onClick={() => setVisible(false)}>
+        <button
+          className="text-gray-700 absolute top-0 left-0"
+          onClick={() => setVisible(false)}
+        >
           <svg
             className="w-4 h-4 text-gray-800"
             aria-hidden="true"

@@ -45,6 +45,8 @@
   font-weight: bold;
   transition: all 100ms ease-in-out;
 
+  
+
   cursor: pointer;
 }
 
@@ -92,6 +94,11 @@
       font-size: 11px;
       gap: 5px;
     }
+
+    .bubbleProfile{
+      width: 35px ;
+      height: 35px;
+    }
   }
   @media (min-width: 300px) and (max-width: 400px) {
     .logoManosdeDiosa {
@@ -119,6 +126,11 @@
       padding-right: 10px;
       font-size: 10px;
       gap: 5px;
+    }
+
+    .bubbleProfile{
+      width: 30px ;
+      height: 30px;
     }
   }
 }
@@ -171,6 +183,7 @@
     top: -4px;
     left: -5px;
   }
+
 }
 @media (min-width: 500px) and (max-width:700px) {
   .bubble {

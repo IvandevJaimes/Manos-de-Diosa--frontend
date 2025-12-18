@@ -1,0 +1,22 @@
+@media (min-width: 300px) and (max-width: 500px) {
+    .spinnerLoading{
+        height: 55px;
+        width: 55px;
+    }
+    .loadingMessage{
+        font-size: 17px;
+    }
+}
+@media (min-width: 500px)  {
+    .spinnerLoading{
+        height: 70px;
+        width: 70px;
+    }
+    .loadingMessage{
+        font-size: 20px;
+    }
+}
+
+.loadingScreenBody{
+    background: var(--pink-200);
+}

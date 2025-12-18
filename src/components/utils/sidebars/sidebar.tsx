@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
-import { createPortal } from 'react-dom';
-import './sidebar.css';
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
+import "./sidebar.css";
 
 interface SidebarProps {
   open: boolean;
   handleClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open, handleClose }) => {
-
+const Sidebar = ({ open, handleClose }: SidebarProps) => {
   useEffect(() => {
-
     if (open) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   const node = (
@@ -27,11 +27,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleClose }) => {
         onClick={handleClose}
         aria-hidden={!open}
         style={{
-          display: open ? 'block' : 'none',
+          display: open ? "block" : "none",
           opacity: open ? 1 : 0,
-          backgroundColor: 'rgba(0,0,0,0.6)',
-          transition: 'opacity 300ms ease-in-out, visibility 300ms ease-in-out',
-          position: 'fixed',
+          backgroundColor: "rgba(0,0,0,0.6)",
+          transition: "opacity 300ms ease-in-out, visibility 300ms ease-in-out",
+          position: "fixed",
           inset: 0,
           zIndex: 99999,
         }}
@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleClose }) => {
       {/* Sidebar */}
       <div
         id="drawer-navigation"
-        style={{ zIndex: 100000, position: 'fixed', top: 0, left: 0 }}
+        style={{ zIndex: 100000, position: "fixed", top: 0, left: 0 }}
         className={`sideBar w-64 h-screen p-4 overflow-y-auto bg-gray-900 transform transition-transform duration-300 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
@@ -173,7 +173,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleClose }) => {
     </>
   );
 
-  return typeof document !== 'undefined' ? createPortal(node, document.body) : node;
+  return typeof document !== "undefined"
+    ? createPortal(node, document.body)
+    : node;
 };
 
 export default Sidebar;

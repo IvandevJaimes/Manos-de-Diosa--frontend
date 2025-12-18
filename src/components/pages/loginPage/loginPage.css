@@ -1,0 +1,79 @@
+.mainLogin {
+  background: var(--g3-cream-peach-pink);
+  overflow-y: hidden;
+}
+.errorLogin p{
+  font-size: 17px;
+}
+.logo {
+  width: 160px;
+}
+.loginBtn {
+  background: var(--g-pink-deep);
+  font-size: 18px;
+}
+.loadingBtn{
+  background: var(--g-pink-deep);
+  opacity: 70%;
+}
+.loginForm {
+  background-color: var(--pink-50);
+  box-shadow: var(--shadow-4);
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .logo {
+    width: 140px;
+  }
+  .loginBtn, .loadingBtn{
+    padding: 10px 17px 10px 17px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  .loginBtn, .loadingBtn {
+    padding: 15px 25px 15px 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  h1 {
+    font-size: 18px;
+    padding-top: 4px;
+  }
+  .backButton {
+    width: 25px;
+    padding-top: 0px;
+  }
+  .remember-forgot a {
+    font-size: 13px;
+    padding-top: 5px;
+  }
+  .captchaBox {
+    transform-origin: left;
+    transform: scale(0.9);
+  }
+  @media (min-width: 300px) and (max-width: 350px) {
+    .captchaBox {
+      transform: scale(0.8);
+    }
+  }
+}
+
+@media (min-width: 300px) {
+  .bottomForm {
+    flex-direction: column;
+  }
+}
+@media (min-width: 600px) {
+  .bottomForm {
+    flex-direction: row-reverse;
+  }
+}
+@media (min-width: 700px) {
+  .loginForm {
+    width: 80vw;
+  }
+}
+
