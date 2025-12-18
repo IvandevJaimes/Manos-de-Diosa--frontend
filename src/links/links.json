@@ -1,19 +1,15 @@
 {
     "socialMedia": {
-        "facebook": "https://www.facebook.com/olfranindumentaria",
-        "instagram": "https://www.instagram.com/olfranindumentaria/",
-        "twitter": "https://twitter.com/olfranindumentia",
-        "linkedin": "https://www.linkedin.com/company/olfran-indumentaria/"
-    },
-    "contactEmail": {
-        "support": ""
+        "instagram": "https://www.instagram.com/_manosdediosa_/"
     },
     "locations": {
         "location": "https://maps.app.goo.gl/niNXfdhoRqKpPS8V8",
         "reference": "Pcia de Córdoba 561, T4000 San Miguel de Tucumán, Tucumán"
     },
     "socialMediaDev": {
-        "linkedin": "https://www.linkedin.com/company/olfran-indumentaria/",
-        "github": ""
+        "linkedin": "www.linkedin.com/in/iván-jaimes-4b825b376",
+        "github": "https://github.com/IvandevJaimes",
+        "email": "jivan8764@gmail.com"
+
     }
 }
